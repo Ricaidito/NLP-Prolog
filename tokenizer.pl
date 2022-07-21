@@ -12,7 +12,7 @@ tokenize(L, [Word|Out]) :-
 
 tokenize([], [], []) :- !.
 tokenize([46|_], [], []) :- !.
-tokenize([32|_], [], []) :- !.
+tokenize([32|T], T, []) :- !.
 
 tokenize([H|T], Rest, [H|List]) :-
     tokenize(T, Rest, List).
