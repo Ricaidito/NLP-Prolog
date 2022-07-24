@@ -23,6 +23,8 @@ determiner(X, P1, P2, singular, exists(X, (P1 & P2))) --> [some].
 
 adj_noun(X,N,P3) --> [divine], noun(X,N,P3).
 
+adj_noun(X,N,P3) --> [pacifist], noun(X,N,P3).
+
 adj_noun(X,N,P3) --> noun(X,N,P3).
 
 noun(X, singular, boy(X)) --> [boy].
@@ -37,6 +39,17 @@ noun(X, singular, flavor(X)) --> [flavor].
 
 noun(X, plural, flavors(X)) --> [flavors].
 
+noun(X, singular, apple(X)) --> [apple].
+
+noun(X, plural, apples(X)) --> [apples].
+
+noun(X, singular, government(X)) --> [government].
+
+noun(X, plural, governments(X)) --> [governments].
+
+noun(X, _, people(X)) --> [people].
+
+
 % noun(X, woman(X)) --> [woman].
 
 trans_verb(X, Y, plural, like(X,Y)) --> [like].
@@ -46,6 +59,14 @@ trans_verb(X, Y, singular, likes(X,Y)) --> [likes].
 trans_verb(X, Y, plural, contain(X,Y)) --> [contain].
 
 trans_verb(X, Y, singular, contains(X,Y)) --> [contains].
+
+trans_verb(X, Y, plural, eat(X,Y)) --> [eat].
+
+trans_verb(X, Y, singular, eats(X,Y)) --> [eats].
+
+trans_verb(X, Y, plural, conscript(X,Y)) --> [conscript].
+
+trans_verb(X, Y, singular, conscripts(X,Y)) --> [conscripts].
 
 intrans_verb(X,plural,run(X)) --> [run].
 
