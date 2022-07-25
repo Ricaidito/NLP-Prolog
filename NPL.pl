@@ -23,7 +23,7 @@ determiner(X, P1, P2, singular, exists(X, (P1 & P2))) --> [some].
 
 determiner(_, P1, P2, _, (P1 & P2) ) --> [].
 
-adj_noun(X,N,(P1,P2)) --> adj(X,P1) ,noun(X,N,P2).
+adj_noun(X,N,(P1 & P2)) --> adj(X,P1) ,noun(X,N,P2).
 
 adj_noun(X,N,P3) --> noun(X,N,P3).
 
