@@ -9,7 +9,7 @@ verb_phrase(X,N,P) --> trans_verb(X,Y,N,P1), noun_phrase(Y,P1,_,P).
 
 verb_phrase(X,N,P) --> intrans_verb(X,N,P).
 
-rel_clause(X, P1, N, (P1 & P2)) --> [that], verb_phrase(X,N,P2).
+rel_clause(X, P1, N, (P1 -> P2)) --> [that], verb_phrase(X,N,P2).
 
 rel_clause(_,P,_,P) --> [].
 
