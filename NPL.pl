@@ -1,5 +1,5 @@
-% op(500,xfy,->).
-% op(500,xfy,&).
+:- op(500,xfy,->).
+:- op(500,xfy,&).
 
 sentence(P) --> noun_phrase(X,P1,N,P), verb_phrase(X,N,P1).
 
@@ -21,9 +21,9 @@ determiner(X, P1, P2, singular, exists(X, (P1 & P2))) --> ['Some'].
 
 determiner(X, P1, P2, singular, exists(X, (P1 & P2))) --> [some].
 
-adj_noun(X,N,P3) --> [divine], noun(X,N,P3).
+determiner(_, P1, P2, _, (P1 & P2) ) --> [].
 
-adj_noun(X,N,P3) --> [pacifist], noun(X,N,P3).
+adj_noun(X,N,(P1,P2)) --> adj(X,P1) ,noun(X,N,P2).
 
 adj_noun(X,N,P3) --> noun(X,N,P3).
 
@@ -49,6 +49,11 @@ noun(X, plural, governments(X)) --> [governments].
 
 noun(X, _, people(X)) --> [people].
 
+noun(X, _, evil(X)) --> [evil].
+
+adj(X, divine(X)) --> [divine].
+
+adj(X, pacifist(X)) --> [pacifist].
 
 % noun(X, woman(X)) --> [woman].
 
@@ -67,6 +72,8 @@ trans_verb(X, Y, singular, eats(X,Y)) --> [eats].
 trans_verb(X, Y, plural, conscript(X,Y)) --> [conscript].
 
 trans_verb(X, Y, singular, conscripts(X,Y)) --> [conscripts].
+
+trans_verb(X, Y, _, are(X,Y)) --> [are].
 
 intrans_verb(X,plural,run(X)) --> [run].
 
