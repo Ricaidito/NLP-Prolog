@@ -14,3 +14,5 @@ Objetivos
 
 - Ricardo Ramírez - 10139152
 - Carlos Collado - 10138713
+
+### Como ejecutarlo:
