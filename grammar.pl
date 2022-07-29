@@ -1,3 +1,6 @@
+% Carlos Collado - 10138713
+% Ricardo Ramirez - 10139152
+
 :- op(500,xfy,=>).
 :- op(500,xfy,&).
 
@@ -7,8 +10,8 @@ np(X,P1,N,P) --> det(X,P2,P1,N,P), adjNoun(X,N,P2).
 np(X,P1,N,P) --> det(X,P2,P1,N,P), adjNoun(X,N,P3), relCl(X,P3,N,P2).
 np(X,P1,N,(P2 & P1)) --> adjNoun(X,N,P2).
 
-vp(X,N,P) --> transVerb(X,Y,N,P1), np(Y,P1,_,P).
-vp(X,N,P) --> intransVerb(X,N,P).
+vp(X,N,P) --> verb(X,Y,N,P1), np(Y,P1,_,P).
+vp(X,N,P) --> verb(X,N,P).
 vp(X,_,P1) --> beVerb, adj(X,P1).
 
 relCl(X, P1, N, (P1 => P2)) --> rel, vp(X,N,P2).
@@ -41,16 +44,15 @@ adj(X, divine(X)) --> [divine].
 adj(X, pacifist(X)) --> [pacifist].
 adj(X, evil(X)) --> [evil].
 
-transVerb(X, Y, plural, like(X,Y)) --> [like].
-transVerb(X, Y, singular, likes(X,Y)) --> [likes].
-transVerb(X, Y, plural, contain(X,Y)) --> [contain].
-transVerb(X, Y, singular, contains(X,Y)) --> [contains].
-transVerb(X, Y, plural, eat(X,Y)) --> [eat].
-transVerb(X, Y, singular, eats(X,Y)) --> [eats].
-transVerb(X, Y, plural, conscript(X,Y)) --> [conscript].
-transVerb(X, Y, singular, conscripts(X,Y)) --> [conscripts].
-
-intransVerb(X,plural,run(X)) --> [run].
-intransVerb(X,singular,runs(X)) --> [runs].
+verb(X, Y, plural, like(X,Y)) --> [like].
+verb(X, Y, singular, likes(X,Y)) --> [likes].
+verb(X, Y, plural, contain(X,Y)) --> [contain].
+verb(X, Y, singular, contains(X,Y)) --> [contains].
+verb(X, Y, plural, eat(X,Y)) --> [eat].
+verb(X, Y, singular, eats(X,Y)) --> [eats].
+verb(X, Y, plural, conscript(X,Y)) --> [conscript].
+verb(X, Y, singular, conscripts(X,Y)) --> [conscripts].
+verb(X,plural,run(X)) --> [run].
+verb(X,singular,runs(X)) --> [runs].
 
 beVerb --> [are].

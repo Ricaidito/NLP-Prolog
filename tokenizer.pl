@@ -1,3 +1,6 @@
+% Carlos Collado - 10138713
+% Ricardo Ramirez - 10139152
+
 go(Out) :-
     read(X),
     name(X, L),
