@@ -13,7 +13,7 @@
 
 `tokenizer.pl` - Archivo que contiene los predicados para procesar la cadena de texto de entrada
 
-`grammar.pl` - Archivo que contiene la regla para verificar y producir la oración en lógica de predicados
+`grammar.pl` - Archivo que contiene los predicados para verificar y producir la oración en lógica de predicados
 
 ### Como ejecutarlo:
 
