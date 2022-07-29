@@ -1,3 +1,4 @@
+% PDP1 - Mini-Proyecto Parcial - Procesamiento de Lenguaje Natural
 % Carlos Collado - 10138713
 % Ricardo Ramirez - 10139152
 
@@ -6,8 +7,8 @@
 
 dcg(X) :- go(List), s(X,List,[]).
 
-
 % Casos Prueba:
+
 % 1. 'All boys run'.
 % 2. 'All boys like all watermelons that contain some divine flavor'.
 % 3. 'Some boy eats some apple'.
