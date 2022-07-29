@@ -1,27 +1,27 @@
 :- op(500,xfy,=>).
 :- op(500,xfy,&).
 
-sentence(P) --> noun_phrase(X,P1,N,P), verb_phrase(X,N,P1).
+s(P) --> np(X,P1,N,P), vp(X,N,P1).
 
-noun_phrase(X,P1,N,P) --> determiner(X,P2,P1,N,P), adj_noun(X,N,P2).
-noun_phrase(X,P1,N,P) --> determiner(X,P2,P1,N,P), adj_noun(X,N,P3), rel_clause(X,P3,N,P2).
-noun_phrase(X,P1,N,(P2 & P1)) --> adj_noun(X,N,P2).
+np(X,P1,N,P) --> det(X,P2,P1,N,P), adjNoun(X,N,P2).
+np(X,P1,N,P) --> det(X,P2,P1,N,P), adjNoun(X,N,P3), relCl(X,P3,N,P2).
+np(X,P1,N,(P2 & P1)) --> adjNoun(X,N,P2).
 
-verb_phrase(X,N,P) --> trans_verb(X,Y,N,P1), noun_phrase(Y,P1,_,P).
-verb_phrase(X,N,P) --> intrans_verb(X,N,P).
-verb_phrase(X,_,P1) --> beVerb, adj(X,P1).
+vp(X,N,P) --> transVerb(X,Y,N,P1), np(Y,P1,_,P).
+vp(X,N,P) --> intransVerb(X,N,P).
+vp(X,_,P1) --> beVerb, adj(X,P1).
 
-rel_clause(X, P1, N, (P1 => P2)) --> rel, verb_phrase(X,N,P2).
+relCl(X, P1, N, (P1 => P2)) --> rel, vp(X,N,P2).
 
-determiner(X, P1, P2, plural, all(X,(P1 => P2))) --> ['All'].
-determiner(X, P1, P2, plural, all(X,(P1 => P2))) --> [all].
-determiner(X, P1, P2, _, exists(X, (P1 & P2))) --> ['Some'].
-determiner(X, P1, P2, _, exists(X, (P1 & P2))) --> [some].
-determiner(X, P1, P2, singular, exists(X, (P1 & P2))) --> ['A'].
-determiner(X, P1, P2, singular, exists(X, (P1 & P2))) --> [a].
+det(X, P1, P2, plural, all(X,(P1 => P2))) --> ['All'].
+det(X, P1, P2, plural, all(X,(P1 => P2))) --> [all].
+det(X, P1, P2, _, exists(X, (P1 & P2))) --> ['Some'].
+det(X, P1, P2, _, exists(X, (P1 & P2))) --> [some].
+det(X, P1, P2, singular, exists(X, (P1 & P2))) --> ['A'].
+det(X, P1, P2, singular, exists(X, (P1 & P2))) --> [a].
 
-adj_noun(X,N,(P1 & P2)) --> adj(X,P1) ,noun(X,N,P2).
-adj_noun(X,N,P3) --> noun(X,N,P3).
+adjNoun(X,N,(P1 & P2)) --> adj(X,P1) ,noun(X,N,P2).
+adjNoun(X,N,P3) --> noun(X,N,P3).
 
 rel --> [that].
 
@@ -41,16 +41,16 @@ adj(X, divine(X)) --> [divine].
 adj(X, pacifist(X)) --> [pacifist].
 adj(X, evil(X)) --> [evil].
 
-trans_verb(X, Y, plural, like(X,Y)) --> [like].
-trans_verb(X, Y, singular, likes(X,Y)) --> [likes].
-trans_verb(X, Y, plural, contain(X,Y)) --> [contain].
-trans_verb(X, Y, singular, contains(X,Y)) --> [contains].
-trans_verb(X, Y, plural, eat(X,Y)) --> [eat].
-trans_verb(X, Y, singular, eats(X,Y)) --> [eats].
-trans_verb(X, Y, plural, conscript(X,Y)) --> [conscript].
-trans_verb(X, Y, singular, conscripts(X,Y)) --> [conscripts].
+transVerb(X, Y, plural, like(X,Y)) --> [like].
+transVerb(X, Y, singular, likes(X,Y)) --> [likes].
+transVerb(X, Y, plural, contain(X,Y)) --> [contain].
+transVerb(X, Y, singular, contains(X,Y)) --> [contains].
+transVerb(X, Y, plural, eat(X,Y)) --> [eat].
+transVerb(X, Y, singular, eats(X,Y)) --> [eats].
+transVerb(X, Y, plural, conscript(X,Y)) --> [conscript].
+transVerb(X, Y, singular, conscripts(X,Y)) --> [conscripts].
 
-intrans_verb(X,plural,run(X)) --> [run].
-intrans_verb(X,singular,runs(X)) --> [runs].
+intransVerb(X,plural,run(X)) --> [run].
+intransVerb(X,singular,runs(X)) --> [runs].
 
 beVerb --> [are].
